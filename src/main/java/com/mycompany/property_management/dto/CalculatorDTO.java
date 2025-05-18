@@ -1,5 +1,6 @@
 package com.mycompany.property_management.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -10,6 +11,8 @@ public class CalculatorDTO {
     private Double num1;
     private Double num2;
     private Double num3;
+
+    @JsonProperty("num_last")
     private Double num4;
 
 }
