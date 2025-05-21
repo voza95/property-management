@@ -20,5 +20,18 @@ public class PropertyConverter {
 
         return propertyEntity;
     }
+
+    public PropertyDTO convertEntityToDTO(PropertyEntity entity) {
+        PropertyDTO dto = new PropertyDTO();
+        dto.setId(entity.getId());
+        dto.setTitle(entity.getTitle());
+        dto.setDescription(entity.getAddress());
+        dto.setAddress(entity.getAddress());
+        dto.setOwnerEmail(entity.getOwnerEmail());
+        dto.setOwner(entity.getOwner());
+        dto.setPrice(entity.getPrice());
+
+        return dto;
+    }
 }
 
