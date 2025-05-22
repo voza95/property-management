@@ -33,6 +33,13 @@ public class PropertyController {
         ResponseEntity<List<PropertyDTO>> entity = new ResponseEntity<>(propertyList, HttpStatus.OK);
         return entity;
     }
+
+    @PutMapping("/properties/{propertyId}")
+    public ResponseEntity<PropertyDTO> updateProperty(@RequestBody PropertyDTO propertyDTO, @PathVariable Long propertyId) {
+        PropertyDTO dto = propertyService.updateProperty(propertyDTO, propertyId);
+        ResponseEntity<PropertyDTO> entity = new ResponseEntity<>(dto, HttpStatus.CREATED);
+        return entity;
+    }
 }
 
 /// In spring boot we don't directly save the data to database as a good practice.

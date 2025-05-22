@@ -11,4 +11,6 @@ public interface PropertyService {
 
     List<PropertyDTO> getAllProperties();
 
+    PropertyDTO updateProperty(PropertyDTO propertyDTO, Long propertyId);
+
 }
