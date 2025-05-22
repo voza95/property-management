@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/v1")
 public class PropertyController {
@@ -19,10 +21,17 @@ public class PropertyController {
         return "Hello world";
     }
 
-    @PostMapping("/save")
+    @PostMapping("/properties")
     public ResponseEntity<PropertyDTO> saveProperty(@RequestBody PropertyDTO propertyDTO) {
         propertyDTO = propertyService.saveProperty(propertyDTO);
         return new ResponseEntity<>(propertyDTO, HttpStatus.CREATED);
+    }
+
+    @GetMapping("/properties")
+    public ResponseEntity<List<PropertyDTO>> getAllProperties() {
+        List<PropertyDTO> propertyList = propertyService.getAllProperties();
+        ResponseEntity<List<PropertyDTO>> entity = new ResponseEntity<>(propertyList, HttpStatus.OK);
+        return entity;
     }
 }
 
