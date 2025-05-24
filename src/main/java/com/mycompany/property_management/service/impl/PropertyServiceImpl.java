@@ -86,6 +86,11 @@ public class PropertyServiceImpl implements PropertyService {
         return null;
     }
 
+    @Override
+    public void deleteProperty(Long id) {
+        repository.deleteById(id);
+    }
+
 }
 
 /// @Service, @Controller, @Configuration, @Component, @Repository

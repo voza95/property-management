@@ -57,6 +57,12 @@ public class PropertyController {
         return entity;
     }
 
+    @DeleteMapping("/properties/{propertyId}")
+    public ResponseEntity deleteProperty(@PathVariable Long propertyId) {
+        propertyService.deleteProperty(propertyId);
+        return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
+    }
+
 }
 
 /// In spring boot we don't directly save the data to database as a good practice.
