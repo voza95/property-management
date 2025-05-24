@@ -16,6 +16,8 @@ public class PropertyController {
     @Autowired
     private PropertyService propertyService;
 
+    PropertyDTO dto;
+
     @GetMapping("/hello")
     public String sayHello() {
         return "Hello world";
@@ -36,10 +38,25 @@ public class PropertyController {
 
     @PutMapping("/properties/{propertyId}")
     public ResponseEntity<PropertyDTO> updateProperty(@RequestBody PropertyDTO propertyDTO, @PathVariable Long propertyId) {
-        PropertyDTO dto = propertyService.updateProperty(propertyDTO, propertyId);
-        ResponseEntity<PropertyDTO> entity = new ResponseEntity<>(dto, HttpStatus.CREATED);
+        dto = propertyService.updateProperty(propertyDTO, propertyId);
+        ResponseEntity<PropertyDTO> entity = new ResponseEntity<>(dto, HttpStatus.OK);
         return entity;
     }
+
+    @PatchMapping("/properties/update-description/{propertyId}")
+    public ResponseEntity<PropertyDTO> updatePropertyDescription(@RequestBody PropertyDTO propertyDTO, @PathVariable Long propertyId) {
+        dto = propertyService.updatePropertyDescription(propertyDTO, propertyId);
+        ResponseEntity<PropertyDTO> entity = new ResponseEntity<>(dto, HttpStatus.OK);
+        return entity;
+    }
+
+    @PatchMapping("/properties/update-price/{propertyId}")
+    public ResponseEntity<PropertyDTO> updatePropertyPrice(@RequestBody PropertyDTO propertyDTO, @PathVariable Long propertyId) {
+        dto = propertyService.updatePropertyPrice(propertyDTO, propertyId);
+        ResponseEntity<PropertyDTO> entity = new ResponseEntity<>(dto, HttpStatus.OK);
+        return entity;
+    }
+
 }
 
 /// In spring boot we don't directly save the data to database as a good practice.
